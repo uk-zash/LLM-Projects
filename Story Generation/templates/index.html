@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Story</title>
+    <style>
+        .container {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            /* height: 100vh; */
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label,
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        label {
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        input,
+        select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            padding-left: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .spinner {
+            margin-top: 10px;
+            border: 4px solid rgb(34, 167, 102);
+            border-top: 4px solid blue;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .response {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 37px;
+            border: 2px solid gray;
+            padding: 33px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Generate Story</h2>
+
+        <form action="#" method="post" id="form">
+            <label for="story">Enter the Title</label>
+            <input type="text" id="story" name="story" required placeholder="Enter story title...">
+
+            <label for="words">Enter the No of Words</label>
+            <input type="number" id="words" name="words" required placeholder="e.g., 500">
+
+            <label for="audience">Select the Audience</label>
+            <select name="audience" id="audience" required>
+                <option value="child">Children</option>
+                <option value="adult">Adults</option>
+                <option value="old">Older Adults</option>
+            </select>
+
+            <button type="submit" id="btn">Generate Story</button>
+        </form>
+    </div>
+
+    <div class="spinner"></div>
+
+    {% if response %}
+    <div class="response">
+        <h2>Generated Story</h2>
+        <p>{{ response}}
+            </p>
+    </div>
+    {% endif %}
+
+
+
+    <script>
+        const form = document.getElementById("form")
+        const spinner = document.querySelector(".spinner")
+
+        form.addEventListener("submit" , (e) => {
+
+            spinner.style.display = "block";
+        })
+    </script>
+</body>
+
+</html>
