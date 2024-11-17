@@ -15,7 +15,7 @@ def getLlamaResponse(input_text, no_words, blog_style):
 
     # Define the template
     template = """
-    Write a blog for {style} job profile for a topic {text}
+    Write topics for {style} job profile for a topic {text}
     within {n_words} words.
     """
 
